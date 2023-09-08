@@ -1,10 +1,10 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Auto completar dados pessoais</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="panel.css">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/134a7b073f.css" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/134a7b073f.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/597fea8ed7.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <h1>Auto completar dados pessoais</h1>
@@ -17,131 +17,133 @@
         <fieldset>
             <legend>Dados pessoais</legend>
             
-            <label for="display_name">Nome visível</label>
-            <input id="display_name" name="display_name" type="text" placeholder="Matt..." title="Nome visível"/>
-            <label for="first_name">Primeiro nome</label>
-            <input id="first_name" name="first_name" type="text" placeholder="Matheus..." title="Primeiro nome" required/>
-            <br>
-
-            <label for="last_name">Sobrenome</label>
-            <input id="last_name" name="last_name" type="text" placeholder="de tal..." title="Sobrenome" required/>
-            <label for="full_name">Nome completo</label>
-            <input id="full_name" name="full_name" type="text" placeholder="Matheus de tal..." title="Nome completo" required/>  
-            <br>
-
-            <label for="father_name">Nome completo do pai</label>
-            <input id="father_name" name="father_name" type="text" title="Nome completo do pai"/>  
-            <br>
-
-            <label for="mother_name">Nome completo da mãe</label>
-            <input id="mother_name" name="mother_name" type="text" title="Nome completo da mãe"/>
-            <br>
-
-            <label for="bio">Biografia</label>
-            <textarea id="bio" name="bio"></textarea>
-            <br>
-            
-            <label for="gender">Gênero</label>
-            <select id="gender" name="gender" title="Gênero" required>
-                <option>Feminino</option>
-                <option>Masculino</option>
-                <option>Não-binário</option>
-                <option>Outro</option>
-            </select>
-            <label for="pronouns">Pronomes</label>
-            <select id="pronouns" name="pronouns" title="Pronomes">
-                <option>Ele/Dele</option>
-                <option>Ela/Dela</option>
-                <option>Outro</option>
-            </select>
-            <br>
-
-            <label for="marital">Estado civil</label>
-            <select id="marital" name="marital" title="Estado civil" required>
-                <option>Solteiro(a)</option>
-                <option>Casado(a)</option>
-                <option>Viúvo(a)</option>
-                <option>Divorciado(a)</option>
-            </select>
-            <label for="race">Etnia/Raça</label>
-            <select id="race" name="race" title="Etnia/Raça">
-                <option>Branco(a)</option>
-                <option>Pardo(a)</option>
-                <option>Negro(a)</option>
-                <option>Indígena(a)</option>
-                <option>Asiático(a)</option>
-            </select>
+            <div>
+                <label for="display_name">Nome visível</label>
+                <input id="display_name" name="display_name" type="text" placeholder="Matt..." title="Nome visível"/>
+                <label for="first_name">Primeiro nome</label>
+                <input id="first_name" name="first_name" type="text" placeholder="Matheus..." title="Primeiro nome" required/>
+            </div>
+            <div>
+                <label for="last_name">Sobrenome</label>
+                <input id="last_name" name="last_name" type="text" placeholder="de tal..." title="Sobrenome" required/>
+                <label for="full_name">Nome completo</label>
+                <input id="full_name" name="full_name" type="text" placeholder="Matheus de tal..." title="Nome completo" required/>  
+            </div>
+            <div>
+                <label for="father_name">Nome completo do pai</label>
+                <input id="father_name" name="father_name" type="text" title="Nome completo do pai"/>  
+            </div>
+            <div>
+                <label for="mother_name">Nome completo da mãe</label>
+                <input id="mother_name" name="mother_name" type="text" title="Nome completo da mãe"/>
+            </div>
+            <div>
+                <label for="bio">Biografia</label>
+                <textarea id="bio" name="bio"></textarea>
+            </div>
+            <div>
+                <label for="gender">Gênero</label>
+                <select id="gender" name="gender" title="Gênero" onchange="completarPronome()" required>
+                    <option disabled hidden selected>Escolha uma opção</option>
+                    <option value="1">Feminino</option>
+                    <option value="2">Masculino</option>
+                    <option value="3">Não-binário</option>
+                    <option value="4">Outro</option>
+                </select>
+                <label for="pronouns">Pronomes</label>
+                <select id="pronouns" name="pronouns" title="Pronomes">
+                    <option disabled hidden selected>Escolha uma opção</option>
+                    <option value="1">Ela/Dela</option>
+                    <option value="2">Ele/Dele</option>
+                    <option value="3">Outro</option>
+                </select>
+            </div>
+            <div>
+                <label for="marital">Estado civil</label>
+                <select id="marital" name="marital" title="Estado civil" required>
+                    <option disabled hidden selected>Escolha uma opção</option>
+                    <option>Solteiro(a)</option>
+                    <option>Casado(a)</option>
+                    <option>Viúvo(a)</option>
+                    <option>Divorciado(a)</option>
+                </select>
+                <label for="race">Etnia/Raça</label>
+                <select id="race" name="race" title="Etnia/Raça">
+                    <option disabled hidden selected>Escolha uma opção</option>
+                    <option>Negro(a)</option>
+                    <option>Pardo(a)</option>
+                    <option>Branco(a)</option>
+                    <option>Indígena(a)</option>
+                    <option>Asiático(a)</option>
+                </select>
+            </div>
         </fieldset>
         <fieldset>
             <legend>Documentação</legend>
-            
-            <label for="id_number">CPF</label>
-            <input id="id_number" name="id_number" type="text" placeholder="xxx.xxx.xxx-xx" title="CPF" required>
-            
-            <label for="doc_number">RG</label>
-            <input id="doc_number" name="doc_number" type="text" placeholder="xx.xxx.xxx-x" title="RG" required>
-            
-            <label for="emiss">Órgão emissor</label>
-            <input id="emiss" name="emiss" type="text" placeholder="..." title="Órgão emissor" required>
+            <div>
+                <label for="id_number">CPF</label>
+                <input id="id_number" name="id_number" type="text" placeholder="xxx.xxx.xxx-xx" title="CPF" oninput="formatarCPF()" required>
+                <label for="doc_number">RG</label>
+                <input id="doc_number" name="doc_number" type="text" placeholder="xx.xxx.xxx-x" title="RG" oninput="formatarRG()" maxlength="10" required>
+            </div>
+            <div> 
+                <label for="emiss">Órgão emissor</label>
+                <input id="emiss" name="emiss" type="text" placeholder="..." title="Órgão emissor" required>
+            </div>
         </fieldset>
         <fieldset>
             <legend>Contato</legend>
-            
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="exemplo@mail.com" title="Email" required>
-            
-            <label for="phone">Telefone</label>
-            <input id="phone" name="phone" type="text" placeholder="(xx)xxxxx-xxxx" title="Telefone" required>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="exemplo@mail.com" title="Email" required>
+                <label for="phone">Telefone</label>
+                <input id="phone" name="phone" type="text" placeholder="(xx)xxxxx-xxxx" title="Telefone" required>
+            </div>
         </fieldset>
         <fieldset>
             <legend>Endereço</legend>
-            
-            <label for="cep">Código Postal</label>
-            <input id="cep" name="cep" type="text" placeholder="xxxxxx-xxx" title="Código Postal" required>
-            <label for="endereco">Endereço</label>
-            <input id="endereco" name="endereco" type="text" title="Endereço" required>
-            <br>
-
-            <label for="city">Cidade</label>
-            <input id="city" name="city" type="text" title="Cidade" required>
-            <label for="district">Bairro</label>
-            <input id="district" name="district" type="text" title="Bairro" required>
-            <br>
-
-            <label for="state">Estado</label>
-            <input id="state" name="state" type="text" title="Estado" required>
-            <label for="country">País</label>
-            <input id="country" name="country" type="text" title="País" required>
+            <div>
+                <label for="cep">Código Postal</label>
+                <input id="cep" name="cep" type="text" placeholder="xxxxxx-xxx" title="Código Postal" required>
+                <label for="endereco">Endereço</label>
+                <input id="endereco" name="endereco" type="text" title="Endereço" required>
+            </div>
+            <div>
+                <label for="city">Cidade</label>
+                <input id="city" name="city" type="text" title="Cidade" required>
+                <label for="district">Bairro</label>
+                <input id="district" name="district" type="text" title="Bairro" required>
+            </div>
+            <div>
+                <label for="state">Estado</label>
+                <input id="state" name="state" type="text" title="Estado" required>
+                <label for="country">País</label>
+                <input id="country" name="country" type="text" title="País" required>
+            </div>
         </fieldset>
         <fieldset>
             <legend>Websites</legend>
-            
-            <label for="website">Website</label>
-            <i class="fa-solid fa-globe"></i>
-            <input id="website" name="website" type="text" title="Website" required>
-            <br>
-
-            <label for="linkedin">LinkedIn</label>
-            <i class="fa-brands fa-linkedin"></i>
-            <input id="linkedin" name="linkedin" type="text" title="LinkedIn" required>
-            <br>
-
-            <label for="instagram">Instagram</label>
-            <i class="fa-brands fa-instagram"></i>
-            <input id="instagram" name="instagram" type="text" title="Instagram" required>
+            <div>
+                <label for="website">Website</label>
+                <i class="fa-solid fa-globe"></i>
+                <input id="website" name="website" type="text" title="Website" required>
+            </div>
+            <div>
+                <label for="linkedin">LinkedIn</label>
+                <i class="fa-brands fa-linkedin"></i>
+                <input id="linkedin" name="linkedin" type="text" title="LinkedIn" required>
+            </div>
+            <div>
+                <label for="instagram">Instagram</label>
+                <i class="fa-brands fa-instagram"></i>
+                <input id="instagram" name="instagram" type="text" title="Instagram" required>
+            </div>
         </fieldset>
 
         <input type="checkbox" required>
         Concordo que todos os dados pessoais aqui informados são de minha responsabilidade.
         <input id="submit" type="submit" value="Enviar"/>
     </form>
-    <script type="text/javascript">
-        document.getElementById("first_name").addEventListener('onchange', function(ev) {
-            document.getElementById("full_name").value = this.value + " " + document.getElementById("last_name").value;
-        });
-        document.getElementById("last_name").addEventListener('onchange', function(ev) {
-            document.getElementById("full_name").value = document.getElementById("first_name").value + " " + this.value;
-        });
-    </script>
+    <script type="text/javascript" src="panel.js"></script>
 </body>
 </html>

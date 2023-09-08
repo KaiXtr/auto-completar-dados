@@ -4,12 +4,14 @@ body {
 h1 {
     text-align: center;
 }
-form {
+p, form {
     margin: 2%;
 }
 fieldset {
     border-radius: 20px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 label {
     display: inline-block;
@@ -24,6 +26,7 @@ input, select {
     background-color: #C4C4C4;
     padding: 10px;
     margin: 5px;
+    display: inline-flex;
 }
 input:required::after {
     content: "*";
@@ -35,4 +38,11 @@ input#submit {
     border: 0px;
     border-radius: 30px;
     padding: 10px;
+}
+textarea {
+    background-color: #E4E4E4;
+    border: 0px;
+    border-radius: 10px;
+    padding: 10px;
+    resize: none;
 }
