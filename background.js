@@ -234,10 +234,15 @@ Array.prototype.slice.call(selects).forEach(el => {
         });
     }
     //Preenchendo países
-    if (el.name.match(/country/g) || el.id.match(/country/g)) {
+    if (el.name.match(/country/g) | el.id.match(/country/g)) {
         Array.prototype.slice.call(el.childNodes).forEach(ch => {
-            if (ch.name == "option" && ch.innerHTML.match(COUNTRY_REGEX)) {
-                ch.selected = true;
+            if (ch.name == "option") {
+                if (ch.innerHTML.match(COUNTRY_REGEX)) {
+                    ch.selected = true;
+                }
+                else {
+                    ch.selected = false;
+                }
             }
         });
     }
