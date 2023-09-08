@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Auto completar dados pessoais</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+    <h1>Auto completar dados pessoais</h1>
+    <b>
+        Atenção! Nenhum dado aqui informado é coletado e enviado para serviços terceiros
+        através da extensão. Utilize a extensão com cautela e sempre examine os formulários
+        e websites onde está preenchendo seus dados pessoais e de identificação.
+    </b>
+    <form action="store.js" method="get">
+        <label for="display_name">Nome visível</label>
+        <input id="display_name" name="display_name" placeholder="Matt..." title="Nome visível"/>
+        <label for="first_name">Primeiro nome</label>
+        <input id="first_name" name="first_name" placeholder="Matheus..." title="Primeiro nome" required/>
+        <label for="last_name">Sobrenome</label>
+        <input id="last_name" name="last_name" placeholder="de tal..." title="Sobrenome" required/>
+        <label for="full_name">Nome completo</label>
+        <input id="full_name" name="full_name" placeholder="Matheus de tal..." title="Nome completos" required/>
+        
+        <input type="checkbox" required>
+        Concordo que todos os dados pessoais aqui informados são de minha responsabilidade.
+        <input id="submit" type="submit" value="Enviar"/>
+    </form>
+    <script type="text/javascript">
+        document.getElementById("first_name").addEventListener('onchange', function(ev) {
+            document.getElementById("full_name").value = this.value + " " + document.getElementById("last_name").value;
+        });
+        document.getElementById("last_name").addEventListener('onchange', function(ev) {
+            document.getElementById("full_name").value = document.getElementById("first_name").value + " " + this.value;
+        });
+    </script>
+</body>
+</html>
