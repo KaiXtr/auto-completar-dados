@@ -4,16 +4,20 @@
     <title>Auto completar dados pessoais</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="panel.css">
-    <script src="https://kit.fontawesome.com/597fea8ed7.js" crossorigin="anonymous"></script>
+    <script src="store.js"></script>
 </head>
 <body>
-    <h1>Auto completar dados pessoais</h1>
+    <h1 id="topo">Auto completar dados pessoais</h1>
     <p>
         Atenção! Nenhum dado aqui informado é coletado e enviado para serviços terceiros
         através da extensão. Utilize a extensão com cautela e sempre examine os formulários
         e websites onde está preenchendo seus dados pessoais e de identificação.
     </p>
-    <form action="store.js" method="get">
+    <p>
+        OBS: nenhum dado é obrigatório, apenas preencha os dados que deseja serem informados automaticamente.
+    </p>
+    <form action="javascript:;" onsubmit="salvar(this)" method="get">
+        <p id="formInfo" name="formInfo"></p>
         <fieldset>
             <legend>Dados pessoais</legend>
             
@@ -21,13 +25,13 @@
                 <label for="display_name">Nome visível</label>
                 <input id="display_name" name="display_name" type="text" placeholder="Matt..." title="Nome visível"/>
                 <label for="first_name">Primeiro nome</label>
-                <input id="first_name" name="first_name" type="text" placeholder="Matheus..." title="Primeiro nome" required/>
+                <input id="first_name" name="first_name" type="text" placeholder="Matheus..." title="Primeiro nome" />
             </div>
             <div>
                 <label for="last_name">Sobrenome</label>
-                <input id="last_name" name="last_name" type="text" placeholder="de tal..." title="Sobrenome" required/>
+                <input id="last_name" name="last_name" type="text" placeholder="de tal..." title="Sobrenome" />
                 <label for="full_name">Nome completo</label>
-                <input id="full_name" name="full_name" type="text" placeholder="Matheus de tal..." title="Nome completo" required/>  
+                <input id="full_name" name="full_name" type="text" placeholder="Matheus de tal..." title="Nome completo" />  
             </div>
             <div>
                 <label for="father_name">Nome completo do pai</label>
@@ -43,7 +47,7 @@
             </div>
             <div>
                 <label for="gender">Gênero</label>
-                <select id="gender" name="gender" title="Gênero" onchange="completarPronome()" required>
+                <select id="gender" name="gender" title="Gênero" onchange="completarPronome()" >
                     <option disabled hidden selected>Escolha uma opção</option>
                     <option value="1">Feminino</option>
                     <option value="2">Masculino</option>
@@ -60,7 +64,7 @@
             </div>
             <div>
                 <label for="marital">Estado civil</label>
-                <select id="marital" name="marital" title="Estado civil" required>
+                <select id="marital" name="marital" title="Estado civil" >
                     <option disabled hidden selected>Escolha uma opção</option>
                     <option>Solteiro(a)</option>
                     <option>Casado(a)</option>
@@ -76,73 +80,80 @@
                     <option>Indígena(a)</option>
                     <option>Asiático(a)</option>
                 </select>
+                <label for="sex_orientation">Orientação sexual</label>
+                <select id="sex_orientation" name="sex_orientation" title="Orientação sexual">
+                    <option disabled hidden selected>Escolha uma opção</option>
+                    <option>Heterossexual</option>
+                    <option>Homossexual</option>
+                    <option>Lésbica</option>
+                    <option>Bissexual</option>
+                    <option>Panssexual</option>
+                    <option>Assexual</option>
+                </select>
             </div>
         </fieldset>
         <fieldset>
             <legend>Documentação</legend>
             <div>
                 <label for="id_number">CPF</label>
-                <input id="id_number" name="id_number" type="text" placeholder="xxx.xxx.xxx-xx" title="CPF" oninput="formatarCPF()" required>
+                <input id="id_number" name="id_number" type="text" placeholder="xxx.xxx.xxx-xx" title="CPF" oninput="formatarCPF()" >
                 <label for="doc_number">RG</label>
-                <input id="doc_number" name="doc_number" type="text" placeholder="xx.xxx.xxx-x" title="RG" oninput="formatarRG()" maxlength="10" required>
+                <input id="doc_number" name="doc_number" type="text" placeholder="xx.xxx.xxx-x" title="RG" oninput="formatarRG()" maxlength="10" >
             </div>
             <div> 
                 <label for="emiss">Órgão emissor</label>
-                <input id="emiss" name="emiss" type="text" placeholder="..." title="Órgão emissor" required>
+                <input id="emiss" name="emiss" type="text" placeholder="..." title="Órgão emissor" >
             </div>
         </fieldset>
         <fieldset>
             <legend>Contato</legend>
             <div>
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="exemplo@mail.com" title="Email" required>
+                <input id="email" name="email" type="email" placeholder="exemplo@mail.com" title="Email" >
                 <label for="phone">Telefone</label>
-                <input id="phone" name="phone" type="text" placeholder="(xx)xxxxx-xxxx" title="Telefone" required>
+                <input id="phone" name="phone" type="text" placeholder="(xx)xxxxx-xxxx" title="Telefone" >
             </div>
         </fieldset>
         <fieldset>
             <legend>Endereço</legend>
             <div>
                 <label for="cep">Código Postal</label>
-                <input id="cep" name="cep" type="text" placeholder="xxxxxx-xxx" title="Código Postal" required>
+                <input id="cep" name="cep" type="text" placeholder="xxxxxx-xxx" title="Código Postal" >
                 <label for="endereco">Endereço</label>
-                <input id="endereco" name="endereco" type="text" title="Endereço" required>
+                <input id="endereco" name="endereco" type="text" title="Endereço" >
             </div>
             <div>
                 <label for="city">Cidade</label>
-                <input id="city" name="city" type="text" title="Cidade" required>
+                <input id="city" name="city" type="text" title="Cidade" >
                 <label for="district">Bairro</label>
-                <input id="district" name="district" type="text" title="Bairro" required>
+                <input id="district" name="district" type="text" title="Bairro" >
             </div>
             <div>
                 <label for="state">Estado</label>
-                <input id="state" name="state" type="text" title="Estado" required>
+                <input id="state" name="state" type="text" title="Estado" >
                 <label for="country">País</label>
-                <input id="country" name="country" type="text" title="País" required>
+                <input id="country" name="country" type="text" title="País" >
             </div>
         </fieldset>
         <fieldset>
             <legend>Websites</legend>
             <div>
                 <label for="website">Website</label>
-                <i class="fa-solid fa-globe"></i>
-                <input id="website" name="website" type="text" title="Website" required>
+                <input id="website" name="website" type="text" title="Website" >
             </div>
             <div>
                 <label for="linkedin">LinkedIn</label>
-                <i class="fa-brands fa-linkedin"></i>
-                <input id="linkedin" name="linkedin" type="text" title="LinkedIn" required>
+                <input id="linkedin" name="linkedin" type="text" title="LinkedIn" >
             </div>
             <div>
                 <label for="instagram">Instagram</label>
-                <i class="fa-brands fa-instagram"></i>
-                <input id="instagram" name="instagram" type="text" title="Instagram" required>
+                <input id="instagram" name="instagram" type="text" title="Instagram" >
             </div>
         </fieldset>
 
         <input type="checkbox" required>
         Concordo que todos os dados pessoais aqui informados são de minha responsabilidade.
-        <input id="submit" type="submit" value="Enviar"/>
+        <a href="#topo"><input id="submit" type="submit" value="Enviar"/></a>
     </form>
     <script type="text/javascript" src="panel.js"></script>
 </body>

@@ -13,11 +13,11 @@
   "browser_action": {
     "default_icon": "icons/icon-32.png",
     "default_title": "Autocompletar dados pessoais",
-    "default_popup": "panel.html"
+    "default_popup": "panel/panel.html"
   },
   "content_scripts": [
     {
-      "matches": ["*://*.mozilla.org/*"],
+      "matches": ["<all_urls>"],
       "js": ["background.js"]
     }
   ],
@@ -25,7 +25,7 @@
     "scripts": ["background.js"]
   },
   "permissions": [
-    "background",
+    "contentScriptFile",
     "contextMenus",
     "storage"
   ]

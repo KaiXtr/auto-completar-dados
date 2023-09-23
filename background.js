@@ -1,49 +1,49 @@
 //Dados pessoais
-var DISPLAY_NAME = "APELIDO";
-var FIRST_NAME = "NOME";
-var LAST_NAME = "SOBRENOME";
+var DISPLAY_NAME = window.localStorage.getItem("display_name");//"APELIDO";
+var FIRST_NAME = window.localStorage.getItem("first_name");//"NOME";
+var LAST_NAME = window.localStorage.getItem("last_name");//"SOBRENOME";
 var FULL_NAME = FIRST_NAME + " " + LAST_NAME;
-var FATHER_NAME = "PAI";
-var MOTHER_NAME = "MÃE";
-var BIO = "BIOGRAFIA LONGA";
-var BIRTHDAY = "dd/mm/yyyy";
-var DAY_REGEX = /1/g;
-var MONTH_REGEX = /Março|março|march|March|3/g;
-var YEAR_REGEX = /1600/g
+var FATHER_NAME = window.localStorage.getItem("father_name");//"PAI";
+var MOTHER_NAME = window.localStorage.getItem("mother_name");//"MÃE";
+var BIO = window.localStorage.getItem("bio");//"BIOGRAFIA LONGA";
+var BIRTHDAY = window.localStorage.getItem("birthday");//"dd/mm/yyyy";
+var DAY_REGEX = window.localStorage.getItem("day_regex");///1/g;
+var MONTH_REGEX = window.localStorage.getItem("month_regex");///Março|março|march|March|3/g;
+var YEAR_REGEX = window.localStorage.getItem("year_regex");///1600/g
 
 //Gênero e etnia
-var GENDER = "Masculino";
-var PRONOUNS = "Ele/Dele";
-var MARITAL_NAME = "Solteiro";
+var GENDER = window.localStorage.getItem("gender");//"Masculino";
+var PRONOUNS = window.localStorage.getItem("pronouns");//"Ele/Dele";
+var MARITAL_NAME = window.localStorage.getItem("marital_name");//"Solteiro";
 var MARITAL_REGEX = /Solteiro|solteiro|solteira/g;
 var RACE_REGEX = /Parda|Pardo|pardo|parda/g;
-var SEX_ORIENTATION = "Bissexual";
+var SEX_ORIENTATION = window.localStorage.getItem("sex_orientation");//"Bissexual";
 
 //Documentação
-var ID_NUMBER = "";
-var DOC_NUMBER = "";
-var EMISS = "";
-var EMISS_STATE = "";
+var ID_NUMBER = window.localStorage.getItem("id_number");//"";
+var DOC_NUMBER = window.localStorage.getItem("doc_number");//"";
+var EMISS = window.localStorage.getItem("emiss");//"";
+var EMISS_STATE = window.localStorage.getItem("emiss_state");//"";
 
 //Contato
-var EMAIL = "exemplo@gmail.com";
-var PHONE = "112222233333";
+var EMAIL = window.localStorage.getItem("email");//"exemplo@gmail.com";
+var PHONE = window.localStorage.getItem("phone");//"112222233333";
 
 //Endereço
-var CEP = "44444666";
-var CITY = "CIDADE";
-var DISTRICT = "BAIRRO";
-var STATE_NAME = "ESTADO";
+var CEP = window.localStorage.getItem("cep");//"44444666";
+var CITY = window.localStorage.getItem("city");//"CIDADE";
+var DISTRICT = window.localStorage.getItem("district");//"BAIRRO";
+var STATE_NAME = window.localStorage.getItem("state_name");//"ESTADO";
 var STATE_REGEX = /UF|uf/g;
-var COUNTRY_NAME = "PAÍS";
+var COUNTRY_NAME = window.localStorage.getItem("country_name");//"PAÍS";
 var COUNTRY_REGEX = /Pais|Pais/g;
-var ADDRESS = "ENDEREÇO LONGO";
-var ADDRESS_NUMBER = "Nro";
+var ADDRESS = window.localStorage.getItem("address");//"ENDEREÇO LONGO";
+var ADDRESS_NUMBER = window.localStorage.getItem("address_number");//"Nro";
 
 //Websites
 var WEBSITE = "";
-var LINKEDIN = "https://www.linkedin.com/";
-var INSTAGRAM = "https://instagram.com";
+var LINKEDIN = window.localStorage.getItem("linkedin");//"https://www.linkedin.com/";
+var INSTAGRAM = window.localStorage.getItem("instagram");//"https://instagram.com";
 
 //Formações acadêmicas
 var SCHOOL_NAME = "";
@@ -63,7 +63,7 @@ Array.prototype.slice.call(inputs).forEach(el => {
             el.value = DISPLAY_NAME;
         }
         //Preenchendo nome completo
-        if (el.name.match(/name|fullName|full_name|f_nome|nome/g) || el.id.match(/name|fullName|full_name|f_nome|nome/g)) {
+        if (el.name.match(/name|fullName|full_name|f_nome|nome|FNAME/g) || el.id.match(/name|fullName|full_name|f_nome|nome|FNAME/g)) {
             el.value = FULL_NAME;
         }
         //Preenchendo primeiro nome
@@ -119,7 +119,7 @@ Array.prototype.slice.call(inputs).forEach(el => {
             el.value = EMAIL;
         }
         //Preenchendo telefone
-        if (el.name.match(/PHONE|phone|tel1|whatsapp/g) || el.id.match(/PHONE|phone|tel1|whatsapp/g)) {
+        if (el.name.match(/PHONE|phone|tel1|whatsapp|CELULAR/g) || el.id.match(/PHONE|phone|tel1|whatsapp|CELULAR/g)) {
             el.value = PHONE;
         }
         //Preenchendo cep
@@ -180,7 +180,6 @@ Array.prototype.slice.call(inputs).forEach(el => {
         //Aceitando política de privacidade
         if (el.name.match(/privacy/g) || el.id.match(/privacy/g)) {
             el.checked = true;
-            el.type = "text";
         }
     }
 });
